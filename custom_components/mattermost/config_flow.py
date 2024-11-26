@@ -16,9 +16,8 @@ from .const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
-CONFIG_SCHEMA = vol.Schema({
-    vol.Required (CONF_NAME): str
-})
+CONFIG_SCHEMA = vol.Schema({vol.Required(CONF_NAME): str})
+
 
 class MattermostFlowHandler(ConfigFlow, domain=DOMAIN):
     """Handle the configuration flow for Mattermost."""
@@ -41,7 +40,9 @@ class MattermostFlowHandler(ConfigFlow, domain=DOMAIN):
             else:
                 return self.async_create_entry(title=info["title"], data=user_input)
 
-        return self.async_show_form(step_id="user", data_schema=CONFIG_SCHEMA, errors=errors)
+        return self.async_show_form(
+            step_id="user", data_schema=CONFIG_SCHEMA, errors=errors
+        )
 
 
 # class PlaceholderHub:
