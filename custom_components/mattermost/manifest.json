@@ -1,17 +1,18 @@
 {
   "domain": "mattermost",
   "name": "Notify Mattermost",
-  "version": "0.1.0-dev",
-  "integration_type": "service",
-  "documentation": "https://github.com/arkane-systems/ha-mattermost/",
-  "issue_tracker": "https://github.com/arkane-systems/ha-mattermost/issues",
-  "dependencies": [],
+
   "codeowners": [
     "@cerebrate"
   ],
   "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/arkane-systems/ha-mattermost/",
+  "integration_type": "service",
+  "iot_class": "cloud_push",
+  "issue_tracker": "https://github.com/arkane-systems/ha-mattermost/issues",
   "requirements": [
     "mattermost==6.5.0"
   ],
-  "iot_class": "cloud_push"
+  "version": "0.1.0-dev"
 }
