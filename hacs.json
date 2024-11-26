@@ -1,5 +1,6 @@
 {
   "name": "Notify Mattermost",
   "content_in_root": false,
-  "homeassistant": "2024.11.3"
+  "homeassistant": "2024.11.3",
+  "render_readme": true
 }
