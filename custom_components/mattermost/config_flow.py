@@ -7,14 +7,18 @@ from typing import Any
 
 import voluptuous as vol
 from homeassistant.config_entries import ConfigFlow, ConfigFlowResult
-from homeassistant.const import CONF_NAME
+from homeassistant.const import CONF_ACCESS_TOKEN, CONF_FRIENDLY_NAME, CONF_URL
 
-from .const import DOMAIN
+from .const import DOMAIN, CONF_CHANNEL
 
 _LOGGER = logging.getLogger(__name__)
 
-CONFIG_SCHEMA = vol.Schema({vol.Required(CONF_NAME): str})
-
+CONFIG_SCHEMA = vol.Schema({
+    vol.Required(CONF_FRIENDLY_NAME): str,
+    vol.Required(CONF_URL): str,
+    vol.Required(CONF_ACCESS_TOKEN) : str,
+    vol.Required(CONF_CHANNEL) :str
+})
 
 class MattermostFlowHandler(ConfigFlow, domain=DOMAIN):
     """Handle the configuration flow for Mattermost."""
@@ -35,7 +39,7 @@ class MattermostFlowHandler(ConfigFlow, domain=DOMAIN):
                 _LOGGER.exception("Unexpected exception.")
                 errors["base"] = "unknown"
             else:
-                return self.async_create_entry(title=info["title"], data=user_input)
+                return self.async_create_entry(title=info["friendly_name"], data=user_input)
 
         return self.async_show_form(
             step_id="user", data_schema=CONFIG_SCHEMA, errors=errors
