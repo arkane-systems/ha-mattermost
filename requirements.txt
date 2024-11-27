@@ -1,2 +1,4 @@
+colorlog==6.9.0
 homeassistant==2024.11.3
 mattermost==6.5.0
+ruff>=0.7.2
