@@ -5,7 +5,7 @@ from __future__ import annotations
 import logging
 from typing import TYPE_CHECKING
 
-from homeassistant.const import CONF_NAME, Platform
+from homeassistant.const import CONF_NAME, Platform, CONF_FRIENDLY_NAME
 from homeassistant.helpers import config_validation as cv
 
 from .const import DATA_HASS_CONFIG, DOMAIN
@@ -33,7 +33,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up a Mattermost instance from a config entry."""
-    _LOGGER.info("Set up Mattermost instance " + entry.data[CONF_NAME])
+    _LOGGER.info("Set up Mattermost instance " + entry.data[CONF_FRIENDLY_NAME])
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     return True
